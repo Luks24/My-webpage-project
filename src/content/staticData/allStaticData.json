@@ -1,0 +1,35 @@
+{
+  "profileImage": "/images/luka.jpg",
+  "profileAlt": "Photo of Luka Kidrič for the blog",
+  "profileLink": "/about-me",
+  "profileTitle": "DevOps engineer",
+  "profileName": "Luka Kidrič",
+  "github": "https://github.com/Luks24",
+  "githubText": "Do you like this blog's design?",
+  "portfolioImage": "/images/portfolio.webp",
+  "email": "luka.kidric@protonmail.com",
+  "linkedin": "https://www.linkedin.com/in/lukakidric/",
+  "alias": "Luks24",
+  "contactSectionTitle": "Want me to help with you projects?",
+  "contactSectionSubtitle": "Let's work together.",
+  "contactSectionButtonText": "Contact Me",
+  "contactSectionButtonIcon": "paperplane",
+  "techsTitle": "TECHS",
+  "githubIconName": "github",
+  "linkedinIconName": "linkedin",
+  "emailIconName": "envelope",
+  "hobbies": [
+    "Reading",
+    "Coffee",
+    "Music",
+    "Movies",
+    "Fitness",
+    "Climbing"
+  ],
+  "pageTitle": "Luka Kidrič",
+  "pageDescription": "porfolio page of Luka Kidrič",
+  "OGImage": {
+    "url": "/images/imagedefault.webp",
+    "alt": "Screenshot of a web portfolio with a modern and dark design. Featuring Fernando López, a Frontend Developer with 8 years of experience, highlighting his passion for development and technology. Includes contact sections, projects, and a technology stack with technologies like HTML5, JavaScript, TypeScript, Angular, Node.js, CSS, Tailwind, and more."
+  }
+}
