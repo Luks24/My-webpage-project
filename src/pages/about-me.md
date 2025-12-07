@@ -8,23 +8,43 @@ image:
   alt: "Photo of Luka Kidričfor the blog"
 ---
 
-I started developing my first commercial projects as a web developer in 2017. Although I've been passionate about technology for as long as I can remember. I discovered the internet at age 6, and along with it, I learned to use **Paint** 🎨 and play **Pinball** on a **Windows XP** computer that my cousins had. Years passed, and I discovered there was a cyber café near my house, so accompanied by my older brother, I spent a lot of time there, watching others play **Age of Empires** ⚔️. When I could, I also played on the computers and investigated how those games worked. But above all, I remember that while sitting there, I watched the owner, Alfredo, the good <a href="https://fred.cpp.mx/" target="_blank" rel="noopener noreferrer">Fred</a>, while he programmed and modeled game maps, or at least that's what I remember. That made me want to try doing the same. I found it incredible how so many things happened on his screen that, although I couldn't understand them, looked amazing. Without a doubt, he was my first influence to get into programming.
+Since I was little I was always interested in technology and liked to tinker with hardware. Because of that reason when I finished high school I went to civil engineering collage but after a year in it didn't feel right to me and I missed the practial aspect of building things. So after that year I took 1 year of to really discover what I want to do. In that time I discovered programing or should I say that I delved deeper into it. This egnited a spark in me so next year I went to do my bachelors in computer science and web development. After that I had the options to also do my masters and **_I became the first to finish the new masters program at my university._**
 
-When we got our first computer at home, around 2011, I spent all my time there, creating my own texture packs to integrate them into one of the games I played the most: **GTA SA**. For this, I learned to use **GIMP** and later **Photoshop**. I wanted to go further and started creating scenarios for the game, so that's when I learned 3D modeling. By then, I was already 12 years old, and I remember I had the intention of dedicating myself to creating video games 🎮. A couple of years later, knowing that programming is needed to create video games, I researched a bit and created my first website with **HTML 4** and **CSS3**. It was a static page, clearly not responsive, and its design and content were very poor, but I felt very proud seeing my page working online.
+## Starting my carear 🖥️
 
-## My Beginnings in Programming 🖥️
+While I was finishing my bachelors I got my first real job as a QA engineer at a startup. There they needed someone who could program to automate their testing and also do some programing for prof of concepts projects. Basically since it was a startup I did a lot of everything which made me realise that what I really like is to understand the base layer of how things work. This also sparked my interested in systems and how they work.
 
-In 2014, I entered high school and decided to take the Programming Technician career. In the first semester, as an integral project, I knew I wanted to make a video game, so I committed to doing it. I learned to use **Unity**, delved deeper into **Blender**, and a bit into **C#**. It was an arduous process, as no one on my team knew how to program, but with their help, we all learned a bit more and managed to complete the project. We delivered a functional demo of a character in a scenario in our 3D _survival_ type game. It was at that moment that I discovered that making a video game is not easy at all and understood the magnitude of knowledge, time, and dedication needed.
+After that I started working for the investor in the former startup since they needed someone with my skill. Here I started to work with cloud providers like Azure and diged deeper into work as a system engineer. Here is also where I learned how to work for a bigger company and how to communicate effectivly with people.
 
-I felt good about having achieved that small project, but gradually I fell more in love with web design and development. So, I started learning more about **HTML**, **CSS**, and **JavaScript**. I spent all my free time watching courses and practicing on fictional sites that I designed.
+My next step was as a APM consultat for AppDynamics which was the solution CISCO had for Application performance monitoring. Here I had the chance to dig deeper into monitroing tools as well as operating systems. What I learned the most though is how to work with customers and how to effectivly comunicate with them. It also broadend my horizon and knowledge of othe culturs since I had customers from all ower the world.
 
-## The World of Robotics 🤖
+But after a while I missed doing more technical work so I joind a company where I worked as a subcontractor for HPE. This was my first experience where I worled for a Fortune 500 company and where I troughly saw how big of a scale this is. I was part of the DevOps team where we were mostly working on migration system to a new platform.
+
+After the project ended I joind my current company CargoX where I am part of a DevOps/SRE team. Here my focus shifted more on Kubernetes and AWS. I also deployed a lot of monitoring solutions as well helped with processes.
+
+The last year I also started to offer my knowledge part-time on other projects so if you want to work with me feel free to contact me.
+
+
+## Other interests in my life 💡
+
+So while I am not deep into solving technology issues One of the things I like to do is to move my body any way possible. I did everythin from trening basketball, going to the gym, climbing. To combat sports like Muay Thai and Brazilian Jiu Jitsu. Most of my movement now comes from training in the gym and going climbing.
+
+I also like to read and have amassed quite the collection of books. The geners I like range from pure technical, plotical, philosophical to more relaxed like fantasy, sci-fi and manga. I also like to collect clasical books and prefer the phisical ones to reading on kindle.
+
+Other then that like most of people I like to listen to music where I prefere older songs from 60s, 70s as well as classical music. I also like to make great espresso at home (one of the trendy hobbies you get after 30).
+
+Good know what will be the next hobbie I pick up.
+
+##  Other fields I worked in 🤖
+
+Since also working part-time I have started working with a robotics company where I would build custom images for the raspberry pi. Doing this has also rekindled the feeling from my childhood where I would take things apart and play with them.
+
+I also do some small project for my personal use that I will describe and share with people in the future on my page here.
+
+Oh yeah modifying this astro template from a github project has also brought back memories from my first days as a developer ( and also css nightmares) but I think that for now it has turned out pretty good.
 
 In high school, a teacher and good friend, **Esteban Ángeles**, recruited me to belong to the school's robotics team, which competed in <a href="https://www.vexrobotics.com.mx/" target="_blank" rel="noopener noreferrer">VEX Robotics</a> tournaments. He saw me while I was designing a "3D spider robot" in **Autodesk Inventor**, so I was able to integrate more friends into the team. One of them was <a href="https://github.com/erikestr" target="_blank" rel="noopener noreferrer">Erik Alejandro Estrada Sauza</a>, someone with the same drive and curiosity as me. I was the robot designer, and he programmed it. Along with the rest of the team, we built it. It was a very fun experience full of learning.
 
 In 2015, thanks to teacher Esteban, I was invited to take an **Autodesk Inventor** course for a week in another city, offered directly by **Autodesk**. At that time, the need arose in the team to get a 3D printer to further improve the functioning of our robot, so we started researching and trying to manufacture our own 3D printer. During that process, we discovered **Kickstarter** and ventured to try to publish a 3D printing project.
 
-## Exploring Crowdfunding 💡
-
-We discovered that in Mexico there was **_Fondeadora_**, a platform similar to Kickstarter. Coincidentally, both platforms were about to merge and, as we had a draft project on Kickstarter, we were invited to the merger event between Fondeadora and Kickstarter. Additionally, we participated in the _<a href="https://www.kickstarter.com/projects/willburgm/100-kickstarter-dreams-the-voice-of-100-creators#react-campaign" target="_blank" rel="noopener noreferrer">Make/100 Kickstarter Dreams - The Voice of 100 Creators</a>_ project, an e-book with a compilation of 100 creators sharing their experience and knowledge gained in their campaigns. There I appeared representing my team as one of the 100 creators.
 
