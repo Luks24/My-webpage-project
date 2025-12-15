@@ -156,12 +156,7 @@ To incorporate a new programming language or technological tool into the site's 
 
 2. **📝 Register the language**: Open the `utils/languages.ts` file and add a new entry to the languages object following this format:
 
-   ```typescript
-   html: {
-       name: "HTML 5",
-       iconName: "html",
-   },
-   ```
+
 
    Where:
    - `html`: Is the unique identifier for the language

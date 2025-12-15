@@ -17235,7 +17235,6 @@ declare module 'virtual:astro-icon' {
 		| "github-svg"
 		| "gitlab"
 		| "grafana"
-		| "html"
 		| "info"
 		| "instagram"
 		| "javascript"

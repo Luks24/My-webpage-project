@@ -27,7 +27,6 @@ Developed with **Astro** and styled with **TailwindCSS**, NeonMint focuses on sp
 
 - Astro
 - TailwindCSS
-- HTML5
 - JavaScript
 
 
