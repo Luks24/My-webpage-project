@@ -5,8 +5,8 @@ author: Luka Kidrič
 description: "A comprehensive guide to preparing for all the Kubernete exams."
 image:
   url: "/images/posts/markdown.webp"
-  alt: "Example of animated borders with Tailwind CSS in a dark design, featuring a vibrant color gradient background."
-pubDate: 2025-04-05
+  alt: "Explanations of how I studied for all the kubernetes exams"
+pubDate: 2025-11-25
 tags:
   [
     "documentation", "tutorial"
@@ -14,151 +14,68 @@ tags:
 languages: ["linux", "kubernetes", "docker"]
 ---
 
-Markdown is a lightweight markup language that you can use to add formatting elements to plaintext text documents. Created by John Gruber in 2004, Markdown is now one of the world's most popular markup languages.
+When I started working with Kubernetes, I had no idea it would take me this far. What began as a way to orchestrate containers for production workloads turned into a mission that transformed how I think about infrastructure, automation, and cloud-native technologies. Today, I can proudly say I’ve joined the ranks of Kubestronauts, making me the 9th Kubestronaunt in Slovenia.
 
-## Basic Syntax
+## What Does It Mean to Be a Kubestronaut?
 
-### Headers
+A Kubestronaut isn’t just someone who uses ***kubectl*** daily. It’s someone who deeply understands Kubernetes—how it works under the hood, how to secure and scale it, and how to automate its every aspect. Becoming a Kubestronaut means being comfortable navigating the unknown: debugging cluster issues, designing multi-tenant architectures, enforcing security policies, and optimizing for performance.
 
-```markdown
-# H1
-## H2
-### H3
-#### H4
-##### H5
-###### H6
-```
+To get there, you need a few critical ingredients:
 
-### Emphasis
+* ***Solid foundations*** in containers, Linux, and networking.
+* ***Hands-on experience*** deploying and operating clusters in real-world scenarios.
+* ***Discipline and curiosity*** to keep learning, because Kubernetes evolves faster than most tools in our ecosystem.
+* ***A structured learning path.***
 
-```markdown
-*Italic text* or _Italic text_
-**Bold text** or __Bold text__
-***Bold and italic*** or ___Bold and italic___
-~~Strikethrough~~
-```
+## My path
 
-### Lists
+Since I was already working with Kubernetes for my job, I didn’t have to start my journey from scratch. But just to get a better base of knowledge, I bought KodeKloud's Udemy course for CKA. I was never a believer in just reading about technologies and not playing around with them, so after I finished the course, I started to seriously prepare for the CKA.
 
-#### Unordered Lists
-```markdown
-- First item
-- Second item
-- Third item
-  - Indented item
-  - Another indented item
-```
+### CKA
 
-#### Ordered Lists
-```markdown
-1. First item
-2. Second item
-3. Third item
-   1. Indented item
-   2. Another indented item
-```
+For this exam, I first used one of the Killer.sh simulators to test my knowledge. While I wouldn’t pass the exam according to the simulator, it gave me a good picture of how the exam is structured and what I need to look out for.
 
-### Links and Images
+Next, I solved all the Killer Coda exercises for CKA. This gave me enough practice and knowledge to try the second simulator, which went much better.
 
-```markdown
-[Link text](https://www.example.com)
-![Alt text](image.jpg)
-```
+Now, the last step for me was to just go through all the questions for the simulator again to really check that I understood them.
 
-### Code
 
-#### Inline Code
-```markdown
-Use `code` in your text
-```
 
-#### Code Blocks
-````markdown
-```javascript
-const hello = "world";
-console.log(hello);
-```
-````
+After that, I scheduled my exam and passed it.
 
-### Blockquotes
+### KCNA
 
-```markdown
-> This is a blockquote
-> 
-> It can span multiple lines
-```
+I then took quite some time to take my KCNA. For this exam, I just searched for all the free resources I could find and then took around 1 week to learn.
 
-### Horizontal Rules
 
-```markdown
----
-***
-___
-```
 
-## Extended Syntax
+This wasn’t a hard exam, and if I took it right after the CKA and not more than half a year later, I don’t think I would have to study for it. 
 
-### Tables
+### KCSA
 
-```markdown
-| Syntax | Description |
-| ----------- | ----------- |
-| Header | Title |
-| Paragraph | Text |
-```
+This one was harder than I expected. You needed to know a lot more about security outside of Kubernetes, and there is also a lack of resources on the internet.
 
-### Task Lists
 
-```markdown
-- [x] Write the press release
-- [ ] Update the website
-- [ ] Contact the media
-```
+As with the KCNA, I tried to find resources online and study them.
 
-### Footnotes
+### CKS
 
-```markdown
-Here's a sentence with a footnote. [^1]
+Now comes the hardest Kubernetes exam, as well as probably one of the hardest IT exams in general. Once again, I solved all the Killer coda exercises for CKS and then did the first simulator. I then reviewed my answers and picked up what I didn’t know. After that, I solved the second one and also analyzed the questions I didn’t know. After all that, I did the real exam.
 
-[^1]: This is the footnote.
-```
+### CKAD
 
-### Emoji
+The last one was the CKAD, and since I already studied so much for the CKS, I just solved the simulator and then went to write the real exam.
 
-```markdown
-:smile: :heart: :rocket:
-```
+## Practice, practice, practice
 
-### Highlight
-
-```markdown
-==highlighted text==
-```
-
-## Best Practices
-
-1. **Keep it Simple**: Markdown is meant to be easy to read and write.
-2. **Use Consistent Formatting**: Stick to one style for similar elements.
-3. **Add Whitespace**: Use blank lines to separate different sections.
-4. **Use Headers Properly**: Start with H1 and use lower levels for subsections.
-5. **Escape Special Characters**: Use backslash to escape special characters.
-
-## Common Pitfalls
-
-- Forgetting to add spaces after headers
-- Not properly indenting nested lists
-- Mixing different list markers
-- Not escaping special characters when needed
-
-## Tools and Resources
-
-- [Markdown Guide](https://www.markdownguide.org/)
-- [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
-- [Dillinger](https://dillinger.io/) - Online Markdown Editor
-- [Markdown Preview](https://markdownlivepreview.com/) - Live Preview Tool
+If there’s one universal truth in this journey, it’s this: ***practice is everything***. Kubernetes is not something you can master by watching a few tutorials or reading documentation. You have to live in it.
+Each time you deploy a new app, isolate a bug, or experiment with a policy, you sharpen your instincts. Theoretical knowledge fades quickly, but hands-on experience builds intuition—and Kubernetes rewards intuition more than memorization.
+Think of practice as the “fuel” that keeps your learning rocket in orbit. It’s repetitive, sometimes frustrating, but that repetition builds the reflexes every Kubestronaut needs.
 
 ## Conclusion
 
-Markdown is a powerful tool for creating well-formatted documents quickly and efficiently. Whether you're writing documentation, taking notes, or creating content for the web, Markdown provides a simple yet effective way to structure your text.
+If you’re thinking of becoming a Kubestronaut yourself, start by learning your fundamentals, building a cluster, and then launch into practice with tools like Killer.sh and Killercoda. 
 
-Remember: The best way to learn Markdown is to practice! Try creating your own documents and experiment with different syntax elements. 
+The journey can be a long one, especially if you don't have any prior experience, but just be consistent, and you will also become a Kubestronaut.
+
+Happy clustering, fellow Kubernetes enthusiasts. 🚀
