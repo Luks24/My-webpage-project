@@ -7,8 +7,7 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://luks24.github.io",
-  base: "/My-webpage-project",                // ADD: repo name with leading slash
+  site: "http://www.luka-kidric.com/",             // ADD: repo name with leading slash
   output: "static",                 // ADD: required for GitHub Pages
   integrations: [
     preact(), 
