@@ -1,8 +1,10 @@
-name: Deploy Astro site to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
+  # Run on pushes to main (change if your default branch is different)
   push:
     branches: [ main ]
+  # Allow manual runs
   workflow_dispatch:
 
 permissions:
@@ -18,15 +20,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install, build, and upload your site output
+      - name: Install, build, and upload your site
         uses: withastro/action@v4
-        with:
-          # path: .            # optional
-          # node-version: 22   # optional
-          # package-manager: npm # auto-detected
+        # Do NOT leave empty keys here. If you don't need options, remove `with:` entirely.
+        # with:
+        #   path: .            # optional
+        #   node-version: 22   # optional
+        #   package-manager: npm # optional
 
   deploy:
     needs: build
