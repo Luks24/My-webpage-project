@@ -28,7 +28,7 @@ const {
 >
   <!-- Profile Section -->
   <div
-    class="mx-auto mb-2 h-96 w-full max-w-7xl rounded-2xl bg-linear-to-r from-mint-300 dark:from-mint-600 to-mint-50 dark:to-mint-200/5 hover:to-mint-300/30 dark:hover:to-mint-600/30 p-[.2rem] max-md:h-auto"
+    class="mx-auto mb-2 md:h-96 w-full max-w-7xl rounded-2xl bg-linear-to-r from-mint-300 dark:from-mint-600 to-mint-50 dark:to-mint-200/5 hover:to-mint-300/30 dark:hover:to-mint-600/30 p-[.2rem] max-md:h-auto"
   >
     <div
       class="group relative z-0 flex h-full items-center justify-center gap-8 overflow-hidden rounded-2xl bg-linear-to-tr from-riptide-100 to-white p-4 transition-all hover:shadow-[0_10px_50px_rgba(13,188,130,0.2)] dark:bg-linear-to-r dark:from-mint-950 dark:to-zinc-950 dark:overflow-hidden max-md:w-full max-md:gap-3 max-lg:gap-2 max-sm:flex-col dark:before:bg-[radial-gradient(circle,rgba(13,188,130)_0,rgba(1,45,34)_100%)] before:bg-[radial-gradient(circle,rgba(95,255,202)_0,rgba(144,253,210)_100%)] before:absolute before:left-65 before:top-10 before:h-[40%] before:aspect-square before:rounded-full before:blur-3xl before:opacity-80 before:-z-10 before:transition hover:before:animate-pulse"
@@ -101,14 +101,53 @@ const {
       </div>
     </div>
   </div>
-
-  <!-- Grid Sections - Perfect content hugging -->
   <div
-    class="mx-auto grid max-w-7xl grid-cols-2 grid-rows-2 gap-2 max-sm:gap-1 md:gap-2 md:grid-cols-4 md:grid-rows-2"
+    class="mx-auto grid max-w-7xl grid-cols-2 grid-rows-4 max-sm:gap-3 gap-4 max-md:h-[80vh] max-sm:h-[900px] max-xl:h-[550px] xl:h-[700px] md:grid-cols-4 md:grid-rows-2"
   >
-    <!-- Tech Stack - Top right on desktop -->
     <div
-      class="col-span-2 row-start-1 rounded-2xl bg-linear-to-r from-mint-300 dark:from-mint-600 to-mint-50 dark:to-mint-200/5 hover:to-mint-300/30 dark:hover:to-mint-600/30 p-[.2rem] md:col-start-3"
+      class="col-start-2 row-start-2 flex flex-col gap-3 rounded-2xl border border-emerald-50 bg-linear-to-r from-riptide-200 to-mint-200 p-8 dark:border-zinc-800 dark:border-2 dark:bg-zinc-800 dark:bg-gradient-radial dark:from-riptide-500 dark:to-mint-500 max-md:gap-0 max-xl:p-5 max-md:p-4 max-lg:gap-1 md:col-start-4"
+    >
+      <div class="flex flex-col-reverse items-start gap-4 max-md:gap-2">
+        <Heading text="Beyond the Code" level={2} />
+      </div>
+
+      <div class="overflow-y-auto">
+        <Hobbies />
+      </div>
+    </div>
+
+    <div
+      class="col-start-1 row-start-2 rounded-2xl bg-linear-to-r from-mint-300 dark:from-mint-600 to-mint-50 dark:to-mint-200/5 hover:to-mint-300/30 dark:hover:to-mint-600/30 p-[.2rem] transition-all ease-in duration-150 hover:scale-105 hover:shadow-[0_20px_50px_rgba(13,188,130,0.4)] z-40 md:col-start-3"
+    >
+      <div class="h-full w-full overflow-hidden rounded-2xl dark:bg-zinc-900">
+        <div
+          class="relative h-full w-full overflow-hidden rounded-2xl bg-linear-to-tr from-riptide-100 to-white dark:from-transparent dark:bg-linear-to-bl dark:to-transparent"
+        >
+          <a
+            target="_blank"
+            href={github}
+            aria-label="View this site's code repository on GitHub"
+          >
+            <div
+              class="relative flex h-full flex-col gap-8 p-8 dark:before:bg-[radial-gradient(circle,rgba(13,188,130)_0,rgba(1,45,34)_100%)] before:bg-[radial-gradient(circle,rgba(95,255,202)_0,rgba(144,253,210)_100%)] before:absolute before:left-30 before:bottom-30 before:h-[30%] before:aspect-square before:rounded-full before:blur-3xl before:opacity-90 before:transition before:z-0 max-xl:p-5 max-md:p-4 xl:before:bottom-10"
+            >
+              <div class="z-2">
+                <Heading text="My GitHub" level={3} />
+              </div>
+
+              <Icon
+                class="absolute -bottom-10 left-30 size-50 text-mint-500/30 group-hover:animate-pulse ease-in-out max-sm:left-10 max-md:left-30 xl:size-56 xl:-bottom-5 xl:-right-24"
+                name="github"
+                aria-hidden="true"
+              />
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="col-span-2 col-start-1 row-start-1 rounded-2xl bg-linear-to-r from-mint-300 dark:from-mint-600 to-mint-50 dark:to-mint-200/5 hover:to-mint-300/30 dark:hover:to-mint-600/30 p-[.2rem] md:col-start-3"
     >
       <article
         class="group relative z-0 flex h-full w-full flex-col overflow-hidden rounded-2xl bg-linear-to-tr from-riptide-100 to-mint-100 p-6 transition hover:shadow-[0_10px_50px_rgba(13,188,130,0.2)] dark:bg-linear-to-r dark:from-mint-900 dark:to-mint-950 dark:overflow-hidden max-md:p-4 gap-6 max-md:gap-3 max-lg:gap-4 dark:before:bg-[radial-gradient(circle,rgba(13,188,130)_0,rgba(1,45,34)_100%)] before:bg-[radial-gradient(circle,rgba(95,255,202)_0,rgba(144,253,210)_100%)] before:absolute before:left-30 before:-bottom-0 before:h-[80%] before:aspect-square before:rounded-full before:blur-3xl dark:before:opacity-80 before:opacity-30 before:-z-10 before:transition"
@@ -116,7 +155,7 @@ const {
         <div class="flex items-center gap-4 max-md:gap-2">
           <Icon
             class="text-3xl dark:text-white text-mint-500 max-md:text-2xl max-sm:text-sm"
-            name="mdi:view-dashboard"
+            name="dashboard"
             aria-hidden="true"
           />
           <Heading text="Tech" textGradient="Stack" level={3} />
@@ -127,82 +166,90 @@ const {
       </article>
     </div>
 
-    <!-- Hobbies - Top left on desktop -->
     <div
-      class="col-span-2 row-start-2 rounded-2xl bg-linear-to-r from-mint-300 dark:from-mint-600 to-mint-50 dark:to-mint-200/5 p-[.2rem] hover:to-mint-300/30 dark:hover:to-mint-600/30 md:col-start-1 md:row-start-1"
+      class="col-span-2 row-span-2 rounded-2xl bg-linear-to-r from-mint-300 dark:from-mint-600 to-mint-50 dark:to-mint-200/5 p-[.2rem] hover:to-mint-300/30 dark:hover:to-mint-600/30 md:col-start-1 md:row-start-1"
     >
-      <div
-        class="group relative z-0 flex h-full w-full flex-col overflow-hidden rounded-2xl bg-linear-to-tr from-riptide-100 to-mint-100 p-6 transition hover:shadow-[0_10px_50px_rgba(13,188,130,0.2)] dark:bg-linear-to-r dark:from-mint-900 dark:to-mint-950 dark:overflow-hidden max-md:p-4 gap-6 max-md:gap-3 max-lg:gap-4 dark:before:bg-[radial-gradient(circle,rgba(13,188,130)_0,rgba(1,45,34)_100%)] before:bg-[radial-gradient(circle,rgba(95,255,202)_0,rgba(144,253,210)_100%)] before:absolute before:left-30 before:-bottom-0 before:h-[80%] before:aspect-square before:rounded-full before:blur-3xl dark:before:opacity-80 before:opacity-30 before:-z-10 before:transition"
-      >
-        <div class="flex flex-col-reverse items-start gap-4 max-md:gap-2">
-          <Heading text="Beyond the Code" level={2} />
-        </div>
-        <div class="overflow-y-auto">
-          <Hobbies />
-        </div>
-      </div>
-    </div>
-
-    <!-- Certifications - Bottom full width, exact profile size -->
-    <div
-      class="col-span-2 row-start-2 h-96 w-full rounded-2xl bg-linear-to-r from-mint-300 dark:from-mint-600 to-mint-50 dark:to-mint-200/5 hover:to-mint-300/30 dark:hover:to-mint-600/30 p-[.2rem] md:col-span-4 md:col-start-1 md:row-start-2 max-md:h-auto"
-    >
-    
       <article
-      class="group relative z-0 flex h-full items-center justify-center gap-8 overflow-hidden rounded-2xl bg-linear-to-tr from-riptide-100 to-white p-4 transition-all hover:shadow-[0_10px_50px_rgba(13,188,130,0.2)] dark:bg-linear-to-r dark:from-mint-950 dark:to-zinc-950 dark:overflow-hidden max-md:w-full max-md:gap-3 max-lg:gap-2 max-sm:flex-col dark:before:bg-[radial-gradient(circle,rgba(13,188,130)_0,rgba(1,45,34)_100%)] before:bg-[radial-gradient(circle,rgba(95,255,202)_0,rgba(144,253,210)_100%)] before:absolute before:left-65 before:top-10 before:h-[40%] before:aspect-square before:rounded-full before:blur-3xl before:opacity-80 before:-z-10 before:transition hover:before:animate-pulse"
+        class="group relative flex h-full flex-col justify-start overflow-hidden rounded-2xl bg-linear-to-br from-riptide-100 to-white dark:from-mint-950 dark:to-zinc-950 p-8 transition-all hover:shadow-[0_20px_50px_rgba(13,188,130,0.4)] max-md:p-6 dark:before:bg-[radial-gradient(circle,rgba(13,188,130)_0,rgba(1,45,34)_100%)] before:bg-[radial-gradient(circle,rgba(95,255,202)_0,rgba(144,253,210)_100%)] before:absolute before:left-1/2 before:bottom-30 before:h-[30%] before:aspect-square before:rounded-full before:blur-3xl before:opacity-70 before:transition before:-z-0 hover:before:animate-pulse xl:before:bottom-2/5"
       >
         <div class="flex items-center gap-4 max-md:gap-2">
           <Icon
-            class="text-3xl dark:text-white text-mint-500 max-md:text-2xl max-sm:text-sm"
-            name="mdi:certificate"
+            class="text-3xl dark:text-white text-mint-500 max-md:text-2xl max-sm:text-xl"
+            name="code"
             aria-hidden="true"
           />
-          <Heading text="Certifications" level={3} />
+          <Heading text="Certificates" level={3} />
         </div>
-        <div class="overflow-y-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-2 h-[calc(100%-4rem)]">
-          <!-- CKS -->
-          <a href="https://www.credly.com/badges/06109cc0-5a4b-4482-925b-34f7ddb2a895" target="_blank" rel="noopener noreferrer"
-            class="group relative rounded-xl p-3 bg-white/80 dark:bg-mint-900/50 backdrop-blur-sm hover:shadow-lg transition-all hover:scale-[1.02] border border-mint-200/50 dark:border-mint-800/50 hover:border-mint-400/70 h-20 flex flex-col items-center justify-center">
-            <Icon name="mdi:shield-check" class="text-lg text-mint-500 mb-1 flex-shrink-0" aria-hidden="true" />
-            <p class="text-xs font-semibold text-blacktext dark:text-white text-center leading-tight">CKS</p>
-          </a>
+    <!-- Make grid take remaining space in the article -->
+    <div class="flex-1 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-2 overflow-y-auto">
+      <!-- CKS -->
+      <a
+        href="https://www.credly.com/badges/06109cc0-5a4b-4482-925b-34f7ddb2a895"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group relative rounded-xl p-3 bg-white/80 dark:bg-mint-900/50 backdrop-blur-sm hover:shadow-lg transition-all hover:scale-[1.02] border border-mint-200/50 dark:border-mint-800/50 hover:border-mint-400/70 flex flex-col items-center justify-center"
+      >
+        <Icon name="mdi:shield-check" class="text-lg text-mint-500 mb-1 flex-shrink-0" aria-hidden="true" />
+        <p class="text-xs font-semibold text-blacktext dark:text-white text-center leading-tight">CKS</p>
+      </a>
 
-          <!-- KCNA -->
-          <a href="https://www.credly.com/badges/ff0256b4-b77b-49f2-a5c5-f6aade12e3a1" target="_blank" rel="noopener noreferrer"
-            class="group relative rounded-xl p-3 bg-white/80 dark:bg-mint-900/50 backdrop-blur-sm hover:shadow-lg transition-all hover:scale-[1.02] border border-mint-200/50 dark:border-mint-800/50 hover:border-mint-400/70 h-20 flex flex-col items-center justify-center">
-            <Icon name="mdi:cloud-outline" class="text-lg text-mint-500 mb-1 flex-shrink-0" aria-hidden="true" />
-            <p class="text-xs font-semibold text-blacktext dark:text-white text-center leading-tight">KCNA</p>
-          </a>
+      <!-- KCNA -->
+      <a
+        href="https://www.credly.com/badges/ff0256b4-b77b-49f2-a5c5-f6aade12e3a1"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group relative rounded-xl p-3 bg-white/80 dark:bg-mint-900/50 backdrop-blur-sm hover:shadow-lg transition-all hover:scale-[1.02] border border-mint-200/50 dark:border-mint-800/50 hover:border-mint-400/70 flex flex-col items-center justify-center"
+      >
+        <Icon name="mdi:cloud-outline" class="text-lg text-mint-500 mb-1 flex-shrink-0" aria-hidden="true" />
+        <p class="text-xs font-semibold text-blacktext dark:text-white text-center leading-tight">KCNA</p>
+      </a>
 
-          <!-- KCSA -->
-          <a href="https://www.credly.com/badges/01955a69-73cc-421d-9f68-1a928f3bb791" target="_blank" rel="noopener noreferrer"
-            class="group relative rounded-xl p-3 bg-white/80 dark:bg-mint-900/50 backdrop-blur-sm hover:shadow-lg transition-all hover:scale-[1.02] border border-mint-200/50 dark:border-mint-800/50 hover:border-mint-400/70 h-20 flex flex-col items-center justify-center">
-            <Icon name="mdi:shield-lock-outline" class="text-lg text-mint-500 mb-1 flex-shrink-0" aria-hidden="true" />
-            <p class="text-xs font-semibold text-blacktext dark:text-white text-center leading-tight">KCSA</p>
-          </a>
+      <!-- KCSA -->
+      <a
+        href="https://www.credly.com/badges/01955a69-73cc-421d-9f68-1a928f3bb791"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group relative rounded-xl p-3 bg-white/80 dark:bg-mint-900/50 backdrop-blur-sm hover:shadow-lg transition-all hover:scale-[1.02] border border-mint-200/50 dark:border-mint-800/50 hover:border-mint-400/70 flex flex-col items-center justify-center"
+      >
+        <Icon name="mdi:shield-lock-outline" class="text-lg text-mint-500 mb-1 flex-shrink-0" aria-hidden="true" />
+        <p class="text-xs font-semibold text-blacktext dark:text-white text-center leading-tight">KCSA</p>
+      </a>
 
-          <!-- CKA -->
-          <a href="https://www.credly.com/badges/5a603400-0279-40fa-8902-e0292fc03ae8" target="_blank" rel="noopener noreferrer"
-            class="group relative rounded-xl p-3 bg-white/80 dark:bg-mint-900/50 backdrop-blur-sm hover:shadow-lg transition-all hover:scale-[1.02] border border-mint-200/50 dark:border-mint-800/50 hover:border-mint-400/70 h-20 flex flex-col items-center justify-center">
-            <Icon name="mdi:kubernetes" class="text-lg text-mint-500 mb-1 flex-shrink-0" aria-hidden="true" />
-            <p class="text-xs font-semibold text-blacktext dark:text-white text-center leading-tight">CKA</p>
-          </a>
+      <!-- CKA -->
+      <a
+        href="https://www.credly.com/badges/5a603400-0279-40fa-8902-e0292fc03ae8"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group relative rounded-xl p-3 bg-white/80 dark:bg-mint-900/50 backdrop-blur-sm hover:shadow-lg transition-all hover:scale-[1.02] border border-mint-200/50 dark:border-mint-800/50 hover:border-mint-400/70 flex flex-col items-center justify-center"
+      >
+        <Icon name="mdi:kubernetes" class="text-lg text-mint-500 mb-1 flex-shrink-0" aria-hidden="true" />
+        <p class="text-xs font-semibold text-blacktext dark:text-white text-center leading-tight">CKA</p>
+      </a>
 
-          <!-- CKAD -->
-          <a href="https://www.credly.com/badges/a9ad449a-cf49-4a69-bc88-cd423fc89977" target="_blank" rel="noopener noreferrer"
-            class="group relative rounded-xl p-3 bg-white/80 dark:bg-mint-900/50 backdrop-blur-sm hover:shadow-lg transition-all hover:scale-[1.02] border border-mint-200/50 dark:border-mint-800/50 hover:border-mint-400/70 h-20 flex flex-col items-center justify-center">
-            <Icon name="mdi:code-tags" class="text-lg text-mint-500 mb-1 flex-shrink-0" aria-hidden="true" />
-            <p class="text-xs font-semibold text-blacktext dark:text-white text-center leading-tight">CKAD</p>
-          </a>
+      <!-- CKAD -->
+      <a
+        href="https://www.credly.com/badges/a9ad449a-cf49-4a69-bc88-cd423fc89977"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group relative rounded-xl p-3 bg-white/80 dark:bg-mint-900/50 backdrop-blur-sm hover:shadow-lg transition-all hover:scale-[1.02] border border-mint-200/50 dark:border-mint-800/50 hover:border-mint-400/70 flex flex-col items-center justify-center"
+      >
+        <Icon name="mdi:code-tags" class="text-lg text-mint-500 mb-1 flex-shrink-0" aria-hidden="true" />
+        <p class="text-xs font-semibold text-blacktext dark:text-white text-center leading-tight">CKAD</p>
+      </a>
 
-          <!-- Kubestronaut -->
-          <a href="https://www.credly.com/badges/db191b0e-70ca-438d-ba24-f92244cf4146" target="_blank" rel="noopener noreferrer"
-            class="group relative rounded-xl p-3 bg-white/80 dark:bg-mint-900/50 backdrop-blur-sm hover:shadow-lg transition-all hover:scale-[1.02] border border-mint-200/50 dark:border-mint-800/50 hover:border-mint-400/70 h-20 flex flex-col items-center justify-center">
-            <Icon name="mdi:rocket-launch" class="text-lg text-mint-500 mb-1 flex-shrink-0" aria-hidden="true" />
-            <p class="text-xs font-semibold text-blacktext dark:text-white text-center leading-tight">Kubestronaut</p>
-          </a>
-        </div>
-      </article>
+      <!-- Kubestronaut -->
+      <a
+        href="https://www.credly.com/badges/db191b0e-70ca-438d-ba24-f92244cf4146"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group relative rounded-xl p-3 bg-white/80 dark:bg-mint-900/50 backdrop-blur-sm hover:shadow-lg transition-all hover:scale-[1.02] border border-mint-200/50 dark:border-mint-800/50 hover:border-mint-400/70 flex flex-col items-center justify-center"
+      >
+        <Icon name="mdi:rocket-launch" class="text-lg text-mint-500 mb-1 flex-shrink-0" aria-hidden="true" />
+        <p class="text-xs font-semibold text-blacktext dark:text-white text-center leading-tight">Kubestronaut</p>
+      </a>
     </div>
+  </article>
+</div>
+
   </div>
 </section>
