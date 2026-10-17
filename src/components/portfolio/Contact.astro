@@ -1,43 +1,28 @@
 ---
-import Heading from "../ui/Heading.astro";
 import Button from "../ui/Button.astro";
 import { getCollection } from "astro:content";
 
 const [staticData] = await getCollection("staticData");
-const {
-  contactSectionTitle,
-  contactSectionSubtitle,
-  contactSectionButtonText,
-  email,
-  contactSectionButtonIcon,
-} = staticData.data;
+const { email, linkedin } = staticData.data;
 ---
 
-<section>
-  <div
-    class="w-full border-b bg-linear-to-b from-mint-100 to-transparent dark:from-mint-800 dark:border-mint-950 border-mint-100"
-  >
-    <div class="mx-auto max-w-5xl px-8 py-24 max-sm:py-12">
-      <div
-        class="flex items-center justify-between max-sm:flex-col max-sm:gap-8 max-sm:text-center"
-      >
-        <div class="max-w-lg">
-          <Heading
-            text={contactSectionTitle}
-            textGradient={contactSectionSubtitle}
-            level={2}
-          />
-        </div>
-        <div
-          class="transition-all duration-500 group-hover:animate-jump group-hover:animate-duration-[300ms] group-hover:animate-ease-in-out group-hover:scale-105 hover:scale-125"
-        >
-          <Button
-            variant="big"
-            link={`mailto:${email}`}
-            text={contactSectionButtonText}
-            iconName={contactSectionButtonIcon}
-          />
-        </div>
+<section class="relative overflow-hidden border-t border-line">
+  <div class="grid-bg pointer-events-none absolute inset-0 opacity-70" aria-hidden="true"></div>
+  <div class="wrap relative py-24 max-md:py-16">
+    <div class="grid items-end gap-10 md:grid-cols-[1.5fr_1fr]" data-reveal>
+      <div class="flex flex-col gap-5">
+        <div class="kicker mono"><span>Get in touch</span></div>
+        <h2 class="max-w-2xl text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.05] tracking-[-0.04em] text-ink text-balance">
+          Need help with your infrastructure? <span class="text-accent">Let's work together.</span>
+        </h2>
+        <p class="max-w-xl text-lg text-mut">
+          I take on part-time projects: Kubernetes, cloud migrations, CI/CD and monitoring. Send a short note about what you're building.
+        </p>
+      </div>
+      <div class="flex flex-col gap-3 md:items-end">
+        <Button link={`mailto:${email}`} text="Email me" iconName="envelope" />
+        <Button link={linkedin} text="Connect on LinkedIn" variant="ghost" />
+        <a href={`mailto:${email}`} class="mono mt-2 text-faint transition-colors hover:text-accent">{email}</a>
       </div>
     </div>
   </div>

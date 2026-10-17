@@ -1,0 +1,84 @@
+---
+import { Icon } from "astro-icon/components";
+import SectionHeader from "../ui/SectionHeader.astro";
+import { CERTIFICATIONS } from "../../data/profile";
+
+interface Props {
+  index?: string;
+}
+const { index = "02" } = Astro.props;
+
+const [featured, ...rest] = CERTIFICATIONS;
+---
+
+<section id="certifications" class="border-y border-line bg-bg-2/60">
+  <div class="wrap py-24 max-md:py-16">
+    <SectionHeader
+      index={index}
+      kicker="Certifications"
+      title="All five Kubernetes exams."
+      highlight="One Kubestronaut."
+      lead="I hold every CNCF Kubernetes certification, which earns the Kubestronaut title. I was the 9th person in Slovenia to get it."
+    />
+
+    <div class="mt-12 grid gap-4 lg:grid-cols-[1fr_2fr]" data-reveal>
+      <a
+        href={featured.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group relative flex flex-col justify-between gap-10 overflow-hidden rounded-lg border border-accent/40 bg-surface p-7 transition-colors hover:border-accent"
+      >
+        <div
+          class="pointer-events-none absolute -right-20 -bottom-20 size-64 rounded-full blur-2xl"
+          style="background: radial-gradient(circle, var(--halo), transparent 70%);"
+          aria-hidden="true"
+        >
+        </div>
+        <div class="mono flex items-center justify-between text-glow">
+          <span>Featured</span>
+          <Icon name="kubernetes" class="size-7" aria-hidden="true" />
+        </div>
+        <div class="relative">
+          <p class="text-4xl font-bold tracking-tight text-ink">{featured.code}</p>
+          <p class="mt-2 text-mut">{featured.name}</p>
+          <span class="mono mt-6 inline-flex items-center gap-2 text-accent">
+            Verify on Credly <span class="transition-transform group-hover:translate-x-0.5">→</span>
+          </span>
+        </div>
+      </a>
+
+      <ul class="hairline-grid grid-cols-2 overflow-hidden rounded-lg max-sm:grid-cols-1">
+        {
+          rest.map((cert) => (
+            <li class="!bg-surface">
+              <a
+                href={cert.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex h-full items-start justify-between gap-4 p-6 transition-colors hover:bg-bg-2"
+              >
+                <div>
+                  <p class="font-mono text-lg font-semibold text-ink">{cert.code}</p>
+                  <p class="mt-1 text-sm text-mut">{cert.name}</p>
+                </div>
+                <span class="text-faint transition-all group-hover:translate-x-0.5 group-hover:text-accent" aria-hidden="true">
+                  ↗
+                </span>
+                <span class="sr-only">(verify on Credly, opens in new tab)</span>
+              </a>
+            </li>
+          ))
+        }
+        <li class="!bg-bg-2">
+          <a href="/blog/posts/markdown-tutorial/" class="group flex h-full flex-col justify-between gap-4 p-6">
+            <span class="mono text-faint">From the blog</span>
+            <span class="flex items-end justify-between gap-4 font-semibold text-ink group-hover:text-accent">
+              How I prepared for all five exams
+              <span class="transition-transform group-hover:translate-x-0.5" aria-hidden="true">→</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

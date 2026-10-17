@@ -1,41 +1,26 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Icon } from "astro-icon/components";
+import Button from "../components/ui/Button.astro";
 ---
 
-<Layout
-    pageTitle="Page Not Found - 404"
-    description="The page you requested could not be found."
->
-    <main
-        class="flex flex-col items-center justify-center min-h-[calc(100vh-200px)] text-blacktext dark:text-gray-200 py-8 md:py-16 px-4 text-center font-montserrat"
-    >
-        <h1
-            class="text-9xl font-bold mb-8 tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-mint-500 to-riptide-500 max-sm:text-7xl"
-        >
-            404
-        </h1>
-
-        <h2
-            class="text-4xl max-md:text-3xl font-roboto font-bold mb-6 text-blacktext dark:text-white"
-        >
-            Page Not Found
-        </h2>
-
-        <p
-            class="max-w-xl text-xl leading-relaxed mb-10 text-pretty text-blacktext dark:text-gray-200"
-        >
-            Oops! It seems the page you are looking for has taken a detour or
-            doesn't exist.
-        </p>
-
-        <a
-            href="/"
-            class="inline-flex items-center gap-3 px-8 py-4 text-white rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl
-             bg-mint-500 hover:bg-mint-600 focus:outline-none focus:ring-4 focus:ring-mint-500/50 dark:bg-riptide-500 dark:hover:bg-riptide-600 dark:focus:ring-riptide-500/50"
-        >
-            <Icon name="arrow-left" class="size-6" aria-hidden="true" />
-            Go Back Home
-        </a>
-    </main>
+<Layout pageTitle="Page not found — Luka Kidrič" description="The page you requested could not be found.">
+  <section class="relative overflow-hidden">
+    <div class="grid-bg pointer-events-none absolute inset-0" aria-hidden="true"></div>
+    <div class="wrap relative flex min-h-[70vh] flex-col items-start justify-center gap-6 py-20">
+      <div class="kicker mono"><span>Error 404</span></div>
+      <h1 class="text-[clamp(2.6rem,7vw,5rem)] font-bold leading-none tracking-[-0.045em] text-ink">
+        This page is <span class="text-accent">not deployed.</span>
+      </h1>
+      <pre class="mono rounded-md border border-line bg-surface px-4 py-3 !text-[12px] !normal-case !tracking-normal text-mut"><span class="text-faint">$</span> kubectl get page <span class="req-path">this-page</span>
+Error from server (NotFound): pages "<span class="req-path">this-page</span>" not found</pre>
+      <div class="flex flex-wrap gap-3 pt-2">
+        <Button link="/" text="Back home" />
+        <Button link="/blog/" text="Read the blog" variant="ghost" />
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<script is:inline>
+  document.querySelectorAll(".req-path").forEach((el) => (el.textContent = location.pathname));
+</script>

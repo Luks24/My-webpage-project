@@ -1,20 +1,44 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Experience from "../components/portfolio/Experience.astro";
 import HeroIndex from "../components/portfolio/HeroIndex.astro";
+import TechMarquee from "../components/portfolio/TechMarquee.astro";
+import Services from "../components/portfolio/Services.astro";
+import Certifications from "../components/portfolio/Certifications.astro";
+import Experience from "../components/portfolio/Experience.astro";
+import Tools from "../components/portfolio/Tools.astro";
 import Contact from "../components/portfolio/Contact.astro";
+import SectionHeader from "../components/ui/SectionHeader.astro";
+import ListPosts from "../components/blog/ListPosts.astro";
 import { getCollection } from "astro:content";
 
 const [staticData] = await getCollection("staticData");
 const { pageTitle, pageDescription, OGImage } = staticData.data;
 ---
 
-<Layout
-  pageTitle={pageTitle}
-  description={pageDescription}
-  ogimage={{ alt: OGImage.alt, url: OGImage.url }}
->
+<Layout pageTitle={pageTitle} description={pageDescription} ogimage={OGImage}>
   <HeroIndex />
-  <Experience />
+  <TechMarquee />
+  <Services />
+  <Certifications index="02" />
+  <Experience index="03" />
+
+  <section id="writing" class="border-t border-line bg-bg-2/60">
+    <div class="wrap py-24 max-md:py-16">
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <SectionHeader
+          index="04"
+          kicker="Writing"
+          title="Notes from the field."
+          lead="Write-ups on Kubernetes, Linux and the tools I use day to day."
+        />
+        <a href="/blog/posts/" class="mono text-accent hover:text-ink transition-colors">All posts →</a>
+      </div>
+      <div class="mt-12" data-reveal>
+        <ListPosts variant="card" limit={3} />
+      </div>
+    </div>
+  </section>
+
+  <Tools index="05" />
   <Contact />
 </Layout>

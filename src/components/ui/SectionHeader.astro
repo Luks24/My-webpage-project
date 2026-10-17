@@ -1,0 +1,32 @@
+---
+interface Props {
+  /** Section number shown as "01 —" */
+  index?: string;
+  kicker: string;
+  title: string;
+  /** Part of the title rendered in the accent color */
+  highlight?: string;
+  lead?: string;
+  level?: 1 | 2;
+}
+
+const { index, kicker, title, highlight, lead, level = 2 } = Astro.props;
+const Tag = `h${level}`;
+---
+
+<div class="flex flex-col gap-5" data-reveal>
+  <div class="kicker mono">
+    {index && <span class="text-faint">{index} —</span>}
+    <span>{kicker}</span>
+  </div>
+  <Tag
+    class:list={[
+      "max-w-3xl font-bold tracking-[-0.035em] text-ink text-balance",
+      level === 1 ? "text-5xl leading-[1.04] max-md:text-4xl" : "text-4xl leading-[1.1] max-md:text-3xl",
+    ]}
+  >
+    {title}{highlight && <>{" "}<span class="text-accent">{highlight}</span></>}
+  </Tag>
+  {lead && <p class="max-w-2xl text-lg leading-relaxed text-mut text-pretty">{lead}</p>}
+  <slot />
+</div>

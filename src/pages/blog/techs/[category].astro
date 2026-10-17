@@ -1,55 +1,32 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
-import BlogPost from "../../../components/blog/BlogPost.astro";
-import Heading from "../../../components/ui/Heading.astro";
-import type { MarkdownInstance } from 'astro';
+import Hero from "../../../components/blog/Hero.astro";
+import ListPosts from "../../../components/blog/ListPosts.astro";
+import Languages from "../../../components/blog/Languages.astro";
+import { getTechs, getPosts } from "../../../utils/posts";
+import { getLanguage } from "../../../utils/languages";
 
-interface Frontmatter {
-  languages: string[];
-  title: string;
-  pubDate: string;
-  tags: string[];
-  image: string;
-}
-export async function getStaticPaths(): Promise<Array<{params: {category: string}, props: {posts: MarkdownInstance<Frontmatter>[]}}>>{
-  const allPosts: MarkdownInstance<Frontmatter>[] = await Astro.glob<Frontmatter>("../posts/*.md");
-
-  const uniqueTags: string[] = [
-    ...new Set(allPosts.map((post: MarkdownInstance<Frontmatter>) => post.frontmatter.languages).flat()),
-  ];
-
-  return uniqueTags.map((category) => {
-    const filteredPosts = allPosts.filter((post) =>
-      post.frontmatter.languages.includes(category)
-    );
-    return {
-      params: { category },
-      props: { posts: filteredPosts },
-    };
-  });
+export function getStaticPaths() {
+  return getTechs().map((category) => ({ params: { category } }));
 }
 
 const { category } = Astro.params;
-const { posts } = Astro.props;
+const name = getLanguage(category).name;
+const matching = getPosts().filter((p) => p.frontmatter.languages?.includes(category));
 ---
 
-<Layout pageTitle={category} >
-  <section class="py-8">
-    <div class="flex flex-col gap-8 max-w-4xl mx-auto">
-      <Heading text="Posts about" textGradient={category}  />
-
-      {
-        posts.map((post) => (
-          <BlogPost
-            url={post.url}
-            title={post.frontmatter.title}
-            date={post.frontmatter.pubDate}
-            tags={post.frontmatter.tags}
-            languages={post.frontmatter.languages}
-            image={post.frontmatter.image}
-          />
-        ))
-      }
+<Layout pageTitle={`${name} — Blog — Luka Kidrič`} description={`Posts about ${name}.`}>
+  <Hero
+    kicker={`Technology · ${matching.length} ${matching.length === 1 ? "post" : "posts"}`}
+    title="Posts about"
+    highlight={` ${name}`}
+  >
+    <div class="mt-2"><Languages /></div>
+  </Hero>
+  <section class="wrap py-16 max-md:py-10">
+    <div class="max-w-4xl">
+      <ListPosts items={matching} />
+      <a href="/blog/posts/" class="mono mt-10 inline-block text-accent transition-colors hover:text-ink">← All posts</a>
     </div>
   </section>
 </Layout>

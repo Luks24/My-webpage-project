@@ -1,6 +1,6 @@
 {
   "profileImage": "/images/luka.jpg",
-  "profileAlt": "Photo of Luka Kidrič for the blog",
+  "profileAlt": "Portrait of Luka Kidrič",
   "profileLink": "/about-me",
   "profileTitle": "DevOps engineer",
   "profileName": "Luka Kidrič",
@@ -26,10 +26,10 @@
     "Fitness",
     "Climbing"
   ],
-  "pageTitle": "Luka Kidrič",
-  "pageDescription": "porfolio page of Luka Kidrič",
+  "pageTitle": "Luka Kidrič — DevOps & SRE Engineer",
+  "pageDescription": "Luka Kidrič is a DevOps/SRE engineer and Kubestronaut from Slovenia with 7+ years of experience in Kubernetes, AWS, infrastructure as code and observability.",
   "OGImage": {
     "url": "/images/imagedefault.webp",
-    "alt": "Screenshot of a web portfolio with a modern and dark design."
+    "alt": "Luka Kidrič — DevOps & SRE Engineer"
   }
 }

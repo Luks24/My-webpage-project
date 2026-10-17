@@ -1,43 +1,28 @@
 ---
-const allTools = [
-  "python",
-  "kubernetes",
-  "AWS",
-  "terraform",
-  "ansible",
-  "linux",
-  "docker",
-  "gitlab",
-  "github",
-  "grafana",
-  "kibana",
-  "prometheus",
-  "pgsql",
-  "node",
-  "mysql",
-  "cloudflare",
-  "git",
-];
-
 import Capsule from "../ui/Capsule.astro";
+import SectionHeader from "../ui/SectionHeader.astro";
+import { STACK } from "../../data/profile";
 
-type ToolVariant = "default" | "center";
-
-// Base classes that are common to all variants
-const baseClasses = "flex flex-wrap gap-4 max-lg:gap-1 grid-auto-efe";
-
-// Variant-specific classes
-const variantClasses: Record<ToolVariant, string> = {
-  default: "cursor-default",
-  center: "justify-center cursor-default",
-};
-
-const { variant = "default", linkEnabled = false, size = "md" } = Astro.props;
-
-// Combine base classes with variant-specific classes
-const classes = `${baseClasses} ${variantClasses[variant as ToolVariant]}`;
+interface Props {
+  index?: string;
+}
+const { index = "04" } = Astro.props;
 ---
 
-<div class={classes}>
-  {allTools.map((tool) => <Capsule lang={tool} linkEnabled={linkEnabled} size={size} />)}
-</div>
+<section id="stack" class="wrap py-24 max-md:py-16">
+  <SectionHeader index={index} kicker="Stack" title="Tools I reach for." />
+  <div class="hairline-grid mt-12 grid-cols-3 overflow-hidden rounded-lg max-lg:grid-cols-2 max-sm:grid-cols-1" data-reveal>
+    {
+      STACK.map((group) => (
+        <div class="flex flex-col gap-5 p-7">
+          <span class="mono text-faint">{group.group}</span>
+          <div class="flex flex-wrap gap-2">
+            {group.tools.map((tool) => (
+              <Capsule lang={tool} linkEnabled={false} />
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

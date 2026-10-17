@@ -1,31 +1,75 @@
 ---
-const { title, url, date, image, tags = [], languages = [] } = Astro.props;
+import type { Post } from "../../utils/posts";
+import { formatDate } from "../../utils/posts";
 
-import Tag from "../ui/Tag.astro";
-import ReadMore from "../ui/ReadMore.astro";
-import DatePub from "./DatePub.astro";
-import Capsule from "../ui/Capsule.astro";
+interface Props {
+  post: Post;
+  /** "row" for lists, "card" for grids */
+  variant?: "row" | "card";
+}
 
+const { post, variant = "row" } = Astro.props;
+const { title, description, pubDate, image, tags = [] } = post.frontmatter;
 ---
 
-<article class="bg-white dark:bg-zinc-900/25 dark:border dark:border-zinc-800 dark:hover:border-mint-300 hover:backdrop-blur-none backdrop-blur-lg shadow-sm overflow-auto hover:shadow-[5px_5px_rgba(0,98,90,0.4),10px_10px_rgba(0,98,90,0.3),15px_15px_rgba(0,98,90,0.2),20px_20px_rgba(0,98,90,0.1),25px_25px_rgba(0,98,90,0.05)] p-8 max-md:p-6 w-full flex justify-between items-center bg-linear-to-r hover:from-teal-200 hover:to-emerald-200 dark:hover:from-riptide-500 dark:hover:to-mint-500 transition-all hover:scale-105  duration-200 ease-in-out gap-8 max-md:gap-4 rounded-3xl max-md:flex-col-reverse">
-    <div class="flex flex-col">
-        <a href={url} class="flex flex-col gap-4 w-full">
-            <DatePub date={date} />
-            <h2 class="dark:text-mint-50 text-blacktext text-3xl font-bold text-pretty">{title}</h2>
-            <ReadMore />
-        </a>
-        <div class="gap-3 mt-3 flex flex-col">
-            <div class="flex gap-2 flex-wrap">
-              
-                 {languages.length > 0 && languages.map((language: string) => <Capsule lang={language} />)} 
-            </div>
-            <div class="gap-2 flex flex-wrap justify-start items-center">
-                {tags.length > 0 && tags.map((tag: string) => <Tag tag={tag}>{tag}</Tag>)}
-            </div>
+{
+  variant === "card" ? (
+    <article class="group relative flex flex-col overflow-hidden rounded-lg border border-line bg-surface transition-colors hover:border-accent/60">
+      {image?.url && (
+        <div class="aspect-[16/9] overflow-hidden border-b border-line bg-bg-2">
+          <img
+            src={image.url}
+            alt=""
+            loading="lazy"
+            class="size-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          />
         </div>
-    </div>
-    {image?.url && (
-        <a href={url} style={{ backgroundImage: `url(${image.url})` }} class="shrink-0 rounded-2xl bg-center bg-cover aspect-video max-md:aspect-video w-2/6 max-md:w-full" />
-    )}
-</article>
+      )}
+      <div class="flex flex-1 flex-col gap-3 p-6">
+        <p class="mono text-faint">
+          <time datetime={pubDate}>{formatDate(pubDate)}</time> · {post.readingTime} min read
+        </p>
+        <h3 class="text-xl font-bold leading-snug tracking-tight text-ink text-balance">
+          <a href={post.url} class="after:absolute after:inset-0 group-hover:text-accent transition-colors">
+            {title}
+          </a>
+        </h3>
+        {description && <p class="line-clamp-2 text-[15px] leading-relaxed text-mut">{description}</p>}
+        <span class="mono mt-auto pt-3 text-accent">
+          Read post <span class="inline-block transition-transform group-hover:translate-x-0.5">→</span>
+        </span>
+      </div>
+    </article>
+  ) : (
+    <article class="group relative grid gap-6 border-b border-line py-8 sm:grid-cols-[1fr_220px] sm:items-center">
+      <div class="flex flex-col gap-3">
+        <p class="mono text-faint">
+          <time datetime={pubDate}>{formatDate(pubDate)}</time> · {post.readingTime} min read
+        </p>
+        <h3 class="text-2xl font-bold leading-snug tracking-tight text-ink text-balance max-sm:text-xl">
+          <a href={post.url} class="after:absolute after:inset-0 group-hover:text-accent transition-colors">
+            {title}
+          </a>
+        </h3>
+        {description && <p class="max-w-2xl leading-relaxed text-mut">{description}</p>}
+        {tags.length > 0 && (
+          <ul class="mono mt-1 flex flex-wrap gap-3 text-faint">
+            {tags.map((tag) => (
+              <li>#{tag}</li>
+            ))}
+          </ul>
+        )}
+      </div>
+      {image?.url && (
+        <div class="aspect-[16/10] overflow-hidden rounded-md border border-line bg-bg-2 max-sm:order-first">
+          <img
+            src={image.url}
+            alt=""
+            loading="lazy"
+            class="size-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+          />
+        </div>
+      )}
+    </article>
+  )
+}

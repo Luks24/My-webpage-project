@@ -1,22 +1,58 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Hero from "../../components/blog/Hero.astro";
-import Tags from "../../components/blog/Tags.astro";
+import LastPost from "../../components/blog/LastPost.astro";
 import ListPosts from "../../components/blog/ListPosts.astro";
-const pageTitle = "DevOps and Technology Blog | Luks24";
-const description = "Welcome to my blog, where I share my passion for frontend development, web design, and the latest technology trends.";
-const ogimage ={
-    url: "/images/blogimage.webp",
-    alt: "EFEELE.dev logo with green background and light effect. Text: 'Web Development and Technology Blog' and URL 'www.efeele.dev'."
-};
+import Tags from "../../components/blog/Tags.astro";
+import Languages from "../../components/blog/Languages.astro";
+import Contact from "../../components/portfolio/Contact.astro";
+import { getPosts } from "../../utils/posts";
+
+const pageTitle = "Blog — Luka Kidrič";
+const description =
+  "Notes on DevOps, Kubernetes, Linux and infrastructure from an SRE engineer and Kubestronaut.";
+const ogimage = { url: "/images/blogimage.webp", alt: "Luka Kidrič — Blog" };
 ---
 
-<Layout  pageTitle={pageTitle} description={description} ogimage={ogimage}>
-   
-    <Hero />
-    <Tags />
-    <div class="px-8 max-sm:px-4">
-        <ListPosts />
+<Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
+  <Hero
+    kicker={`Blog · ${getPosts().length} ${getPosts().length === 1 ? "post" : "posts"}`}
+    title="Notes on DevOps, Kubernetes"
+    highlight=" & infrastructure."
+    lead="Write-ups from the work I do: certification paths, build systems, tooling and the occasional lesson learned the hard way."
+  >
+    <div class="mt-2 flex flex-wrap items-center gap-x-6 gap-y-3">
+      <span class="mono text-faint">Browse:</span>
+      <Tags />
+      <a href="/rss.xml" class="mono text-faint transition-colors hover:text-accent">RSS ↗</a>
     </div>
+  </Hero>
 
+  <section class="wrap py-16 max-md:py-10">
+    <LastPost />
+  </section>
+
+  <section class="wrap pb-24 max-md:pb-16">
+    <div class="grid gap-12 lg:grid-cols-[1fr_280px]">
+      <div>
+        <div class="mb-2 flex items-baseline justify-between">
+          <h2 class="mono text-faint">More posts</h2>
+          <a href="/blog/posts/" class="mono text-accent transition-colors hover:text-ink">View all →</a>
+        </div>
+        <ListPosts excludeLatest limit={5} />
+      </div>
+      <aside class="flex flex-col gap-8 lg:sticky lg:top-24 lg:self-start">
+        <div class="flex flex-col gap-4 rounded-lg border border-line p-6">
+          <h2 class="mono text-faint">Technologies</h2>
+          <Languages />
+        </div>
+        <div class="flex flex-col gap-4 rounded-lg border border-line p-6">
+          <h2 class="mono text-faint">Topics</h2>
+          <Tags showCounts />
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <Contact />
 </Layout>

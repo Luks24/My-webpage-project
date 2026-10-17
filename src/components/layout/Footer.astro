@@ -1,67 +1,91 @@
 ---
-import Social from "../ui/Social.astro";
 import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 
 const [staticData] = await getCollection("staticData");
-const {
-  github,
-  alias,
-  email,
-  linkedin,
-  emailIconName,
-  linkedinIconName,
-  githubIconName,
-} = staticData.data;
+const { github, email, linkedin } = staticData.data;
+
+const year = new Date().getFullYear();
+
+const columns = [
+  {
+    title: "Site",
+    links: [
+      { name: "Home", href: "/" },
+      { name: "Experience", href: "/#experience" },
+      { name: "About", href: "/about-me/" },
+    ],
+  },
+  {
+    title: "Writing",
+    links: [
+      { name: "Blog", href: "/blog/" },
+      { name: "All posts", href: "/blog/posts/" },
+      { name: "RSS feed", href: "/rss.xml" },
+    ],
+  },
+  {
+    title: "Elsewhere",
+    links: [
+      { name: "GitHub", href: github },
+      { name: "LinkedIn", href: linkedin },
+      { name: "Email", href: `mailto:${email}` },
+    ],
+  },
+];
 ---
 
-<footer
-  class="relative bottom-0 w-full px-4 py-8 font-medium text-blacktext dark:bg-transparent dark:border-b-2 dark:border-zinc-800 dark:text-zinc-300 max-lg:mt-3"
-  role="contentinfo"
-  aria-label="Site footer"
->
-  <nav
-    class="mx-auto flex max-w-7xl flex-row items-center justify-between gap-4 text-xl max-xl:px-6 max-sm:flex-col"
-    aria-label="Footer navigation"
-  >
-    <div
-      class="relative h-6 cursor-pointer before:absolute before:left-1/2 before:top-1/2 before:h-full before:w-[40%] before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-[#50fd8f25] before:blur-3xl before:opacity-80 before:-z-1 hover:text-mint-500 transition-all [text-shadow:0_1px_2px_#000]"
-    >
-      <a href="/" aria-label="Return to homepage">
-        <!-- This icon represents the logo -->
-        <Icon name="logo" aria-hidden="true" class="h-12 w-12 cursor-pointer transition-all hover:text-mint-300 hover:scale-80" />
+<footer class="border-t border-line bg-bg">
+  <div class="wrap grid gap-12 py-16 md:grid-cols-[1.4fr_repeat(3,1fr)]">
+    <div class="flex flex-col gap-4">
+      <a href="/" class="flex items-center gap-3 font-semibold tracking-tight text-ink">
+        <span
+          class="grid size-8 place-items-center rounded-[6px] border border-line bg-surface font-mono text-[13px] font-semibold text-accent"
+          aria-hidden="true">LK</span
+        >
+        Luka Kidrič
       </a>
+      <p class="max-w-xs text-sm leading-relaxed text-mut">
+        DevOps &amp; SRE engineer. Kubernetes, AWS, infrastructure as code and observability.
+      </p>
+      <div class="flex gap-2">
+        <a href={github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="grid size-9 place-items-center rounded-md border border-line text-mut transition-colors hover:text-ink hover:border-accent">
+          <Icon name="github" class="size-4" aria-hidden="true" />
+        </a>
+        <a href={linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="grid size-9 place-items-center rounded-md border border-line text-mut transition-colors hover:text-ink hover:border-accent">
+          <Icon name="linkedin" class="size-4" aria-hidden="true" />
+        </a>
+        <a href={`mailto:${email}`} aria-label={`Email ${email}`} class="grid size-9 place-items-center rounded-md border border-line text-mut transition-colors hover:text-ink hover:border-accent">
+          <Icon name="envelope" class="size-4" aria-hidden="true" />
+        </a>
+      </div>
     </div>
-    <div class="text-center">
-      <a
-        href={github}
-        class="flex items-center justify-center gap-3 text-base font-normal italic max-sm:text-sm"
-        aria-label="About the website development"
-        ><Icon name="code" aria-hidden="true" /> Modified by <strong
-          >{alias}</strong
-        >, with Astro</a
-      >
+
+    {
+      columns.map((col) => (
+        <div class="flex flex-col gap-4">
+          <span class="mono text-faint">{col.title}</span>
+          <ul class="flex flex-col gap-2.5">
+            {col.links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  {...(link.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  class="text-sm text-mut transition-colors hover:text-ink"
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+  <div class="border-t border-line-soft">
+    <div class="wrap flex flex-wrap items-center justify-between gap-3 py-6">
+      <span class="mono text-faint">© {year} Luka Kidrič</span>
+      <span class="mono text-faint">Built with Astro · Hosted on GitHub Pages</span>
     </div>
-    <div
-      class="flex items-center justify-center gap-5"
-      role="group"
-      aria-label="Social media links"
-    >
-      <Social
-        link={`mailto:${email}`}
-        iconName={emailIconName}
-        label={`Send email to ${email}`}
-      />
-      <Social
-        link={github}
-        iconName={githubIconName}
-        label={`Visit ${alias} on GitHub`}
-      />
-      <Social
-        link={linkedin}
-        iconName={linkedinIconName}
-        label={`Visit ${alias} on LinkedIn`}
-      />
-    </div>
-  </nav>
+  </div>
 </footer>

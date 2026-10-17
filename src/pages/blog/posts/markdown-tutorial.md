@@ -2,7 +2,7 @@
 layout: /src/layouts/MarkdownPostLayout.astro
 title: Road to Kubestronaut
 author: Luka Kidrič
-description: "A comprehensive guide to preparing for all the Kubernete exams."
+description: "A comprehensive guide to preparing for all five Kubernetes exams and becoming a Kubestronaut."
 image:
   url: "/images/posts/markdown.webp"
   alt: "Explanations of how I studied for all the kubernetes exams"

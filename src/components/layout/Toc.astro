@@ -1,0 +1,57 @@
+---
+import type { MarkdownHeading } from "astro";
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+const items = (Astro.props.headings ?? []).filter((h) => h.depth === 2 || h.depth === 3);
+---
+
+{
+  items.length > 0 && (
+    <nav class="flex flex-col gap-4" aria-label="Table of contents">
+      <span class="mono text-faint">On this page</span>
+      <ul id="toc" class="flex flex-col border-l border-line text-sm">
+        {items.map((h) => (
+          <li>
+            <a
+              href={`#${h.slug}`}
+              data-slug={h.slug}
+              class:list={[
+                "-ml-px block border-l border-transparent py-1.5 text-mut transition-colors hover:text-ink",
+                h.depth === 2 ? "pl-4" : "pl-8 text-[13px]",
+              ]}
+            >
+              {h.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}
+
+<script>
+  const links = document.querySelectorAll<HTMLAnchorElement>("#toc a");
+  const targets = [...links]
+    .map((a) => document.getElementById(a.dataset.slug ?? ""))
+    .filter((el): el is HTMLElement => !!el);
+
+  const setActive = (slug: string) =>
+    links.forEach((a) => {
+      const active = a.dataset.slug === slug;
+      a.classList.toggle("!text-ink", active);
+      a.classList.toggle("!border-accent", active);
+    });
+
+  if (targets.length) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => e.isIntersecting && setActive(e.target.id));
+      },
+      { rootMargin: "-20% 0px -70% 0px" }
+    );
+    targets.forEach((t) => io.observe(t));
+  }
+</script>

@@ -1,82 +1,36 @@
 ---
-import ExperienceItem from "./ExperienceItem.astro";
-import Heading from "../ui/Heading.astro";
-import { Icon } from "astro-icon/components";
+import SectionHeader from "../ui/SectionHeader.astro";
+import { EXPERIENCE } from "../../data/profile";
 
-const EXPERIENCE = [
-  {
-    date: "2025 - Present",
-    title: "Owner",
-    company: "Luka Kidrič s.p.",
-    description:
-      "Currently also working part time as a self-employed individual, providing specialized programming services and technical consulting. This role involves collaborating with clients to develop tailored software solutions that meet their specific requirements. Leveraging extensive skills in software development and project management helps to deliver high-quality results.",
-  },
-  {
-    date: "2023 - Present",
-    title: "SRE engineer",
-    company: "Cargo X",
-    description:
-      "Engaged as an SRE Engineer, focusing on maintaining system reliability and performance across various platforms. Responsibilities include monitoring system health and automating processes to enhance operational efficiency.",
-  },
-  {
-    date: "2022 - 2023",
-    title: "DevOps engineer",
-    company: "Comtrade 360",
-    description:
-      "Served as a DevOps Engineer, responsible for developing and managing infrastructure as code for our client HPE. The role involved using tools such as Terraform and Ansible to automate deployment processes and configuration management. Continuous improvement of system reliability and efficiency was a key focus.",
-  },
-  {
-    date: "2021 - 2022",
-    title: "APM consultant",
-    company: "Perform IT",
-    description:
-      "Worked as a consultant for CISCO AppDynamic product where I worked with clients like Pepsi and first Abu Dhabi Bank.",
-  },
-  {
-    date: "2020 - 2021",
-    title: "DevOps engineer",
-    company: "Kolektor Sisteh",
-    description:
-      "Started working as a DevOps engineer. My task were automating the build process as well as deploying our IoT solution to Azure",
-  },
-  {
-    date: "2019 - 2020",
-    title: "Student work",
-    company: "VIAR",
-    description:
-      "Worked as QA automation engineer while finishing my bachelors degree.",
-  },
-
-];
+interface Props {
+  index?: string;
+}
+const { index = "03" } = Astro.props;
 ---
 
-<section class="py-8 px-8 max-md:py-4 mb-4 scroll-m-16" id="experience">
-  <div class="flex flex-col pt-8 max-w-4xl mx-auto">
-    <div class="flex gap-4 items-center justify-center">
-      <Icon class="text-3xl dark:text-white text-blacktext" name="briefcase" />
-      <Heading text="Work" textGradient="Experience" level={2} />
-    </div>
+<section id="experience" class="wrap py-24 max-md:py-16">
+  <SectionHeader
+    index={index}
+    kicker="Experience"
+    title="From QA automation to SRE."
+    lead="Startups, consultancies and Fortune 500 clients, each step a little closer to how systems work underneath."
+  />
 
-    <div class="relative max-md:mt-0 mt-8" aria-label="Professional experience">
-      <ol class="relative mt-10">
-        {
-          EXPERIENCE.map((experience, index) => (
-            <li>
-              <article
-                role="article"
-                aria-labelledby={`experience-title-${index}`}
-              >
-                <div
-                  class="flex flex-col gap-2  text-zinc-00 dark:text-zinc-300 md:col-span-3"
-                  aria-describedby={`experience-title-${index}`}
-                >
-                  <ExperienceItem {...experience} />
-                </div>
-              </article>
-            </li>
-          ))
-        }
-      </ol>
-    </div>
-  </div>
+  <ol class="mt-12 border-t border-line" data-reveal>
+    {
+      EXPERIENCE.map((job) => (
+        <li class="group grid items-start gap-x-10 gap-y-2 border-b border-line py-8 md:grid-cols-[150px_220px_1fr]">
+          <div class="mono flex items-center gap-2 pt-1 text-faint">
+            {job.current && <span class="size-1.5 rounded-full bg-accent" aria-hidden="true" />}
+            <time>{job.date}</time>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold tracking-tight text-ink">{job.title}</h3>
+            <p class="text-accent">{job.company}</p>
+          </div>
+          <p class="leading-relaxed text-mut">{job.description}</p>
+        </li>
+      ))
+    }
+  </ol>
 </section>

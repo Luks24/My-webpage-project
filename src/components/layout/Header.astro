@@ -1,66 +1,121 @@
 ---
-import Navigation from "./Navigation.astro";
 import ThemeIcon from "../ui/ThemeIcon.astro";
-import Social from "../ui/Social.astro";
-import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 
 const [staticData] = await getCollection("staticData");
-const { github, githubIconName, linkedin, linkedinIconName } = staticData.data;
+const { email } = staticData.data;
 
-const currentPath = Astro.url.pathname;
-const routes = ["/", "/portfolio", "/about-me"];
+const path = Astro.url.pathname;
 
-// Check if the current route is in the list of routes
-const isActiveRoute = routes.includes(currentPath);
-
-const navItems = isActiveRoute
-  ? ["home", "experience", "about", "blog"]
-  : ["home", "blog", "about"]; // Change the items
+const links = [
+  { name: "Home", href: "/", active: path === "/" },
+  { name: "Experience", href: "/#experience", active: false },
+  { name: "Blog", href: "/blog/", active: path.startsWith("/blog") },
+  { name: "About", href: "/about-me/", active: path.startsWith("/about-me") },
+];
 ---
 
 <header
-  role="banner"
-  aria-label="Main navigation"
-  class="sticky top-0 z-50 w-full p-4 font-medium text-blacktext dark:text-zinc-300 dark:bg-[#0E0E11]/80 dark:border-b dark:border-zinc-800 bg-white/90 backdrop-blur-xs dark:backdrop-blur-xs max-md:z-50 max-md:px-0 transition-all"
+  class="sticky top-0 z-50 border-b border-line bg-bg/80 backdrop-blur-md supports-[backdrop-filter]:bg-bg/70"
 >
-  <div
-    class="relative mx-auto flex max-w-7xl flex-row items-center justify-between max-xl:px-6"
-  >
-  <a href="/" aria-label="Go to home">
-    <Icon
-      name="logo"
-      class="h-12 w-12 cursor-pointer transition-all hover:text-mint-300 hover:scale-110"  
-      aria-hidden="true"
-    />
-  </a>
-
-    <Navigation items={navItems} />
-
-    <div class="flex items-center justify-between gap-5 text-xl">
-      <div
-        class="max-md:hidden flex items-center justify-center gap-5"
-        role="group"
+  <div class="wrap flex h-16 items-center justify-between gap-6">
+    <a href="/" class="group flex items-center gap-3 font-semibold tracking-tight text-ink" aria-label="Luka Kidrič — home">
+      <span
+        class="grid size-8 place-items-center rounded-[6px] border border-line bg-surface font-mono text-[13px] font-semibold text-accent transition-colors group-hover:border-accent"
+        aria-hidden="true">LK</span
       >
-        <Social link={github} iconName={githubIconName} />
-        <Social link={linkedin} iconName={linkedinIconName} />
-      </div>
-    </div>
-    <div class="flex items-center gap-5 text-xl md:pl-5">
+      <span class="max-sm:hidden">Luka Kidrič</span>
+    </a>
+
+    <nav class="max-md:hidden flex items-center gap-1" aria-label="Main">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            aria-current={link.active ? "page" : undefined}
+            class:list={[
+              "rounded-md px-3 py-2 text-sm transition-colors",
+              link.active ? "text-ink" : "text-mut hover:text-ink",
+            ]}
+          >
+            {link.name}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex items-center gap-2">
       <ThemeIcon />
+      <a
+        href={`mailto:${email}`}
+        class="max-md:hidden mono rounded-md bg-accent-fill px-4 py-2.5 !text-[11px] font-medium text-accent-on transition-opacity hover:opacity-90"
+        >Get in touch</a
+      >
       <button
-        class="hamburger"
+        id="menu-toggle"
+        type="button"
+        class="md:hidden grid size-9 place-items-center rounded-md border border-line text-ink"
         aria-label="Open menu"
         aria-expanded="false"
         aria-controls="mobile-menu"
       >
-        <Icon name="bars" class="hamburger-icon bars-icon" aria-hidden="true" />
-        <Icon
-          name="xmark"
-          class="hamburger-icon xmark-icon"
-          aria-hidden="true"
-        />
+        <span class="relative block h-3 w-4" aria-hidden="true">
+          <span class="menu-bar absolute left-0 top-0 h-px w-4 bg-current transition-transform"></span>
+          <span class="menu-bar absolute bottom-0 left-0 h-px w-4 bg-current transition-transform"></span>
+        </span>
       </button>
     </div>
   </div>
+
+  <div id="mobile-menu" class="md:hidden hidden border-t border-line bg-bg">
+    <nav class="wrap flex flex-col py-3" aria-label="Mobile">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            aria-current={link.active ? "page" : undefined}
+            class:list={[
+              "border-b border-line-soft py-3 text-base",
+              link.active ? "text-ink" : "text-mut",
+            ]}
+          >
+            {link.name}
+          </a>
+        ))
+      }
+      <a
+        href={`mailto:${email}`}
+        class="mono mt-4 rounded-md bg-accent-fill px-4 py-3 text-center font-medium text-accent-on"
+        >Get in touch</a
+      >
+    </nav>
+  </div>
 </header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  toggle?.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!open));
+    toggle.setAttribute("aria-label", open ? "Open menu" : "Close menu");
+    toggle.classList.toggle("is-open", !open);
+    menu?.classList.toggle("hidden", open);
+  });
+  menu?.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => {
+      toggle?.setAttribute("aria-expanded", "false");
+      toggle?.classList.remove("is-open");
+      menu.classList.add("hidden");
+    })
+  );
+</script>
+
+<style>
+  #menu-toggle.is-open .menu-bar:first-child {
+    transform: translateY(5.5px) rotate(45deg);
+  }
+  #menu-toggle.is-open .menu-bar:last-child {
+    transform: translateY(-5.5px) rotate(-45deg);
+  }
+</style>

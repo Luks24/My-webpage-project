@@ -2,7 +2,7 @@
 layout: /src/layouts/MarkdownPostLayout.astro
 title: Rpi-image-gen for custom image generation
 author: Luka Kidrič
-description: "RPI-image-gen is an offical RaspberryPi projecto to build custom Pi images."
+description: "rpi-image-gen is the official Raspberry Pi project for building custom Pi images. Here is how I used it to build a custom Ubuntu image."
 image:
   url: "/images/projects/neonmint.webp"
   alt: "Description of how I used rpi-image-gen to create a custom ubuntu image"
